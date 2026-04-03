@@ -177,10 +177,13 @@ function HomePage() {
     formData.append("mri", mriFileRef.current);
     formData.append("cha", chaFileRef.current);
     try {
-      const res = await fetch("http://localhost:8000/predict", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch(
+        "https://cognidetect-backend.onrender.com/predict",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
       const data = await res.json();
       setResult(data);
     } catch (err) {
